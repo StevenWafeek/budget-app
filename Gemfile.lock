@@ -261,7 +261,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
-  rubocop
+  rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
