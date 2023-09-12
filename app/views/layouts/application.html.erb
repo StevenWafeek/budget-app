@@ -5,17 +5,79 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-    <%# <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "authentication", "mobile_nav", "category", "form", "page_header", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+
+  <% if user_signed_in? %>
+  <div id="mobile-nav-container">
+  <button id="close-mobile-nave"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Mobile navigation menu -->
+<div class="profile-info-container">
+  <div class="profile-img">
+    <% if user_signed_in? && current_user.photo.present? %>
+      <%= image_tag current_user.photo, class: "avatar-img rounded-circle" %>
+    <% else %>
+      <i class="fa-solid fa-user"></i>
+    <% end %>
+  </div>
+  <% if user_signed_in? && current_user.name.present? %>
+    <p><%= current_user.name %></p> <!-- Display the user's name -->
+  <% else %>
+    <p>Guest User</p> <!-- You can provide a default name or message for guests -->
+  <% end %>
+</div>
+
+
+    <ul id="mobile-nav-menu">
+      <!-- Add your navigation links here -->
+      <li class="nav-link"><%= link_to  "Settings", '' %></li>
+      <li class="nav-link"><%= link_to "Sign Out", destroy_user_session_path,  data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to logout?' }, class: "nav-link" %></li>
+    </ul>
+
+    <!-- Overlay for closing the mobile navigation -->
+  </div>
+  <div id="mobile-nav-overlay"></div>
+    <%= render 'shared/header' %>
+    <p class="notice" id="notice"><%= notice %></p>
+    <p class="alert notice"><%= alert %></p>
+  <% end %>
     <%= yield %>
   </body>
+  <script>
+    function initMenue() {
+      setTimeout(function() {
+      let element = document.getElementById('notice');
+        element.style.display = 'none';
+      }, 3000);
+
+      // Get the mobile navigation elements
+      let mobileNavContainer = document.getElementById('mobile-nav-container');
+      let mobileNavToggle = document.getElementById('mobile-nav-toggle');
+      let mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+      let closeMobileNave = document.getElementById('close-mobile-nave');
+      let navLinks = document.querySelectorAll('.nav-link');
+
+      // Funtion to Toggle the mobile navigation 
+      const toggleMobileMenue = () => {
+        mobileNavContainer.classList.toggle('open');
+        mobileNavOverlay.classList.toggle('active')
+      }
+
+      navLinks.forEach(element => {
+        element.addEventListener('click', toggleMobileMenue)
+      });
+
+      // Toggle the mobile navigation when the toggle button is clicked
+      mobileNavToggle.addEventListener('click', toggleMobileMenue);
+      closeMobileNave.addEventListener('click', toggleMobileMenue);
+      // Close the mobile navigation when the overlay is clicked
+      mobileNavOverlay.addEventListener('click', toggleMobileMenue);
+    }
+
+    initMenue()
+
+  </script>
 </html>
