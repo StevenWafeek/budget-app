@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users
+  
+  resources :users
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  get '/splash', to: 'splashes#index'
+  resources :groups
+  resources :payments
 
-
-  devise_scope :user do
-    authenticated :user do
-      root 'categories#index', as: :authenticated_root
-    end
-
-    unauthenticated do
-      root "splashes#index", as: :unauthenticated_root
-    end
+  unauthenticated do
+    root "users#welcome"
   end
 
-  resources :users, only: [:index, :show, :new] do
-    resources :categories, only: [:new, :create, :show, :index, :destroy]
-    resources :entities, only: [:new, :create, :index, :show, :destroy]
-  end
+  root 'groups#index', as: "categories"
+
+  # Defines the root path route ("/")
 end
