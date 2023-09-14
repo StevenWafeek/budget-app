@@ -3,9 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :groups
+  has_many :payments
 
-  has_many :categories, foreign_key: 'author_id'
-  has_many :entities, foreign_key: 'author_id'
-  attribute :photo, :string
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { minimum: 5 }
 end
