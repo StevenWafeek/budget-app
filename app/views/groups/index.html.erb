@@ -1,0 +1,33 @@
+<div class="categories-container">
+<div class="menu">
+<ul>
+  <li><%= button_to "Log out", destroy_user_session_path, :method => :delete %></li>
+</ul>
+  </div>
+  <div class="categories-header">
+    <i class="fas fa-bars fa-2x"></i>
+    <h2>CATEGORIES</h2>
+  </div>
+
+  <% if notice %>
+    <p style="color: green"><%= notice %></p>
+  <% end %>
+
+  <div class="groups">
+    <% @groups.each do |group| %>
+      <a class="group-container" href="groups/<%= group.id %>">
+        <div>
+          <%=image_tag "#{group.icon}"%>
+          <p><%= group.name %> <br> <span class="time"><%= Date.strptime(group.created_at.to_datetime.to_s).strftime("%d/%m/%Y") %> </span></p>
+        </div>
+        <% total_amount = 0.00 %>
+        <% group.payment_groups.each do |element| %>
+          <% total_amount += element.payment.amount %>
+        <% end %>
+        <p>$<%= total_amount %></p>
+      </a>
+    <% end %>
+  </div>
+
+  <%= link_to "Add a new category", new_group_path, class: "create-new-category" %>
+</div>
