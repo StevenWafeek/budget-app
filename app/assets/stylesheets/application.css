@@ -1,0 +1,293 @@
+:root {
+  --main-color: #3778c2;
+  --secondary-color: #5fb523;
+  --third-color: #434b54;
+}
+
+*:focus {
+  outline: none;
+}
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+  height: 90vh;
+}
+
+.welcome-container h1 {
+  color: var(--third-color);
+  margin-bottom: 150px;
+}
+
+.welcome-container .links {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forget-password a {
+  text-decoration: none;
+  color: var(--third-color);
+}
+
+.welcome-container .links a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  color: #aaadaf;
+}
+
+.sign-up-form .sign-up-header a,
+.login-form .login-header a,
+.forget-password-form .forget-password-header a,
+.categories-container .categories-header i,
+.transactions-container .transactions-header a,
+.new-group-form .new-group-header a,
+.new-payment-form .new-payment-header a {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+
+.transactions-container .transactions-header a,
+.welcome-container .links a:first-child {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.categories-container,
+.transactions-container {
+  position: relative;
+  height: 95vh;
+}
+
+.sign-up-form,
+.login-form,
+.forget-password-form,
+.categories-container,
+.transactions-container,
+.new-group-form,
+.new-payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sign-up-form .sign-up-header,
+.login-form .login-header,
+.forget-password-form .forget-password-header,
+.categories-container .categories-header,
+.transactions-container .transactions-header,
+.new-group-form .new-group-header,
+.new-payment-form .new-payment-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+}
+
+.sign-up-form .sign-up-header div,
+.login-form .login-header div,
+.forget-password-form .forget-password-header div,
+.new-group-form .new-group-header div,
+.new-payment-form .new-payment-header div {
+  position: absolute;
+  right: 20px;
+}
+
+.sign-up-form .sign-up-header input[type="submit"],
+.login-form .login-header input[type="submit"],
+.forget-password-form .forget-password-header input[type="submit"],
+.new-group-form .new-group-header input[type="submit"],
+.new-payment-form .new-payment-header input[type="submit"] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+
+.sign-up-form .sign-up-header a i,
+.login-form .login-header a i,
+.forget-password-form .forget-password-header a i,
+.new-group-form .new-group-header a i,
+.new-payment-form .new-payment-header a i {
+  color: white;
+}
+
+.sign-up-form .field,
+.login-form .field,
+.forget-password-form .field,
+.new-group-form .field,
+.new-payment-form .field {
+  margin: 10px;
+}
+
+.sign-up-form .field input,
+.login-form .field input,
+.forget-password-form .field input,
+.new-group-form .field input,
+.new-payment-form .field input {
+  border: none;
+  border-bottom: 1px solid var(--third-color);
+  width: 100%;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.login-form .field input[type="checkbox"] {
+  width: fit-content;
+}
+
+.forget-password {
+  display: flex;
+  justify-content: center;
+}
+
+.categories-container .groups,
+.transactions-container .transactions-inner-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 5px;
+  height: 100%;
+}
+
+.categories-container .groups .group-container,
+.transactions-container .transactions-inner-container .group-container,
+.transactions-container .transactions-inner-container .payments-container .payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 10px;
+  border-bottom: 1px solid #c6c6c7;
+}
+
+.transactions-container .transactions-inner-container .group-container form {
+  margin-right: 5%;
+}
+
+.categories-container .menu button {
+  width: 100%;
+  font-size: 3em;
+  border: 0;
+  background-color: transparent;
+  color: white;
+}
+
+.transactions-container .transactions-inner-container .group-container form button {
+  background-color: white;
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--third-color);
+  cursor: pointer;
+}
+
+.categories-container .groups .group-container div,
+.transactions-container .transactions-inner-container .group-container div {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 20px;
+}
+
+.categories-container .groups .group-container div img,
+.transactions-container .transactions-inner-container .group-container div img {
+  width: 25%;
+}
+
+.transactions-container .transactions-inner-container .payments-container .payment form {
+  margin-right: 5%;
+}
+
+.transactions-container .transactions-inner-container .payments-container .payment form button {
+  background-color: white;
+  border-radius: 5px;
+  color: var(--third-color);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.categories-container .groups .group-container p,
+.transactions-container .transactions-inner-container .group-container p,
+.transactions-container .transactions-inner-container .payments-container .payment p {
+  width: 20%;
+  text-align: center;
+  font-size: 1.5em;
+  color: var(--third-color);
+  font-weight: bold;
+}
+
+.transactions-container .transactions-inner-container .payments-container .payment p {
+  font-size: 20px;
+}
+
+.transactions-container .transactions-inner-container .payments-container .payment p:first-child {
+  width: 50%;
+}
+
+.transactions-container .transactions-inner-container h3 {
+  text-align: center;
+  color: var(--third-color);
+  font-size: 25px;
+}
+
+.categories-container .create-new-category,
+.transactions-container .create-new-transaction {
+  width: 100%;
+  height: 100px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 35px;
+}
+
+.categories-container .menu {
+  position: fixed;
+  height: 100vh;
+  width: 80vw;
+  background-color: black;
+  z-index: 3;
+  margin-left: -83vw;
+  transition: margin 1s;
+}
+
+.categories-container .menu ul {
+  margin-top: 10%;
+}
+
+.icon-select {
+  border: none;
+  width: 100%;
+  background-color: #e2dfdf;
+  padding: 20px;
+  font-size: 27px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: 100% !important;
+  outline: none;
+}
+
+.time {
+  font-weight: lighter;
+}
