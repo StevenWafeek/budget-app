@@ -53,13 +53,13 @@ With BudgetApp, users can effortlessly track their income and expenses, gaining 
 
 ### 🚀Live Demo <a name="Live Demo"></a>
 
-[Live](https://stev.onrender.com/)
+[Live](https://app-fbkn.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Presentation <a name="Presentation"></a>
 
-[presentation]()
+[presentation](https://www.loom.com/share/cc4da199972c4012ae86858a7cf578ac?sid=0d58820f-5526-4d33-8f1e-802291328dd8)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -77,7 +77,7 @@ for cloning follow this steps
 
 - Create a local directory where you can clone the project
 - Clone the project to your directory by running
-  https://github.com/jeanbuhendwa/ror-budget-app.git
+  https://github.com/StevenWafeek/budget-app
 - Run the code with ruby
 
 Example commands:
