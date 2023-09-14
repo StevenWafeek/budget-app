@@ -1,0 +1,32 @@
+<%= form_for(resource, as: resource_name, data: { turbo: false }, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
+  <div class="login-header">
+    <a href="/"><i class="fas fa-arrow-left fa-2x"></i></a>
+    <h2>LOGIN</h2>
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  </div>
+
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email"  %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", required: true, placeholder: "Password"  %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+<% end %>
+<div class="forget-password">
+  <%= render "devise/shared/links" %>
+</div>

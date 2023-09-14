@@ -1,0 +1,39 @@
+<div class="transactions-container">
+  <div class="transactions-header">
+    <a href="/"><i class="fas fa-arrow-left fa-2x"></i></a>
+    <h2>TRANSACTIONS</h2>
+  </div>
+
+  <% if notice %>
+    <p style="color: green"><%= notice %></p>
+  <% end %>
+
+  <div class="transactions-inner-container">
+    <div class="group-container">
+      <div>
+        <%=image_tag "#{@group.icon}"%>
+        <p><%= @group.name %> <br> <span class="time"><%= Date.strptime(@group.created_at.to_datetime.to_s).strftime("%d/%m/%Y") %> </span></p>
+      </div>
+      <% total_amount = 0.00 %>
+      <% @group.payment_groups.each do |element| %>
+        <% total_amount += element.payment.amount %>
+      <% end %>
+      <p>Total: $<%= total_amount %></p>
+      <%= button_to "Delete", group_path(@group), :method => :delete %>
+    </div>
+
+    <h3>Transactions</h3>
+    
+    <div class="payments-container">
+      <% @payments_group.each do |element|%>
+        <div class="payment">
+          <p><%= element.payment.name %> <br> <span class="time"><%= Date.strptime(element.payment.created_at.to_datetime.to_s).strftime("%d/%m/%Y") %></span> </p>
+          <p>$<%= element.payment.amount %></p>
+          <%= button_to "Delete", payment_path(element.payment), :method => :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "Add a new transaction", new_payment_path, class: "create-new-transaction" %>
+</div>

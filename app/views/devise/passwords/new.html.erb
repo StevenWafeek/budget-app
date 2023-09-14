@@ -1,0 +1,17 @@
+<%= form_for(resource, as: resource_name, data: { turbo: false }, url: password_path(resource_name), html: { method: :post, class: "forget-password-form" }) do |f| %>
+  <div class="forget-password-header">
+    <a href="/users/sign_in"><i class="fas fa-arrow-left fa-2x"></i></i></a>
+    <h2>FORGET PASSWORD</h2>
+    <div class="actions">
+      <%= f.submit "Send" %>
+    </div>
+  </div>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Enter email to send reset password instructions" %>
+  </div>
+
+<% end %>
+

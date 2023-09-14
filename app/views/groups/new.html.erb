@@ -1,0 +1,36 @@
+<%= form_with(model: @group, html: {class: "new-group-form"}) do |form| %>
+  <div class="new-group-header">
+    <a href="/"><i class="fas fa-arrow-left fa-2x"></i></a>
+    <h2>NEW CATEGORY</h2>
+    <div class="actions">
+      <%= form.submit "Create" %>
+    </div>
+  </div>
+
+  <% if @group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :name, placeholder: "Name", required: true %>
+  </div>
+
+  <div>
+    <%= form.select :icon, options_for_select([
+        ['Shopping' ,@icons[0]],
+        ['Education' ,@icons[1]],
+        ['Bills' ,@icons[2]],
+        ['Insurance' ,@icons[3]],
+        ['Travel' ,@icons[4]],
+      ]),{ include_blank: "Select Icon"}, required: true , class:"icon-select"%>
+  </div>
+
+<% end %>
