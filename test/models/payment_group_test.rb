@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SplashesControllerTest < ActionDispatch::IntegrationTest
+class PaymentGroupTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
